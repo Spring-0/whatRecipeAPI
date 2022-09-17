@@ -8,9 +8,9 @@ whatRecipeAPI is my first attempt at creating an API, I am sure that some of the
 
 ### Dependencies
 
-* [FastAPI]https://pypi.org/project/fastapi/
-* [Pandas]https://pypi.org/project/pandas/
-* [Pydantic]https://pypi.org/project/pydantic/
+* [FastAPI](https://pypi.org/project/fastapi/)
+* [Pandas](https://pypi.org/project/pandas/)
+* [Pydantic](https://pypi.org/project/pydantic/)
 
 ## Authors
 
