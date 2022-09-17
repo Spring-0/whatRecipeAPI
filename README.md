@@ -15,10 +15,10 @@ whatRecipeAPI is my first attempt at creating an API, I am sure that some of the
 ## Authors
 
 Spring93
-```
-[@Jacuav](https://twitter.com/Jacuav)
-Spring#9999
-```
+
+Twitter: [@Jacuav](https://twitter.com/Jacuav)
+Discord: Spring#9999
+
 
 ## Version History
 
