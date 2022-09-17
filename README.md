@@ -16,7 +16,7 @@ whatRecipeAPI is my first attempt at creating an API, I am sure that some of the
 
 Spring93
 
-Twitter: [@Jacuav](https://twitter.com/Jacuav)
+Twitter: [@Jacuav](https://twitter.com/Jacuav)<br />
 Discord: Spring#9999
 
 
