@@ -27,5 +27,5 @@ Discord: Spring#9999
 
 ## Acknowledgments
 
-* [HugoDarwood] - Dataset(https://www.kaggle.com/datasets/hugodarwood/epirecipes)
-* [DomPizzie] - This readme template(https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc#file-readme-template-md)
+* [HugoDarwood - Dataset](https://www.kaggle.com/datasets/hugodarwood/epirecipes)
+* [DomPizzie - This readme template](https://gist.github.com/DomPizzie/7a5ff55ffa9081f2de27c315f5018afc#file-readme-template-md)
