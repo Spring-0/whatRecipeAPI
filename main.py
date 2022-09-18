@@ -1,7 +1,8 @@
-from fastapi import FastAPI
+
+from uuid import UUID, uuid4
+from fastapi import FastAPI, HTTPException
 import pandas as pd
-#  from fastapi import Response
-from models import Recipe
+from models import Recipe, RecipeUpdateRequest
 from typing import List
 
 app = FastAPI()
@@ -13,6 +14,7 @@ db: List[Recipe] = []
 
 for index, row in df.iterrows():
     db.append(Recipe(
+        id=uuid4(),
         title=row['title'],
         rating=row['rating'],
         calories=row['calories'],
@@ -39,7 +41,38 @@ async def fetch_all_recipes():
 @app.post('/api/v1/recipes')
 async def upload_recipe(recipe: Recipe):
     if recipe in db:
-        return {"Error: ": "This title is already in the database!"}
+        return {"Error": "This title is already in the database!"}
     else:
         db.append(recipe)
         return f"Recipe '{recipe.title}' has successfully been added!"
+
+@app.delete('/api/v1/recipes/{recipe_id}')
+async def delete_recipe(recipe_id: UUID):
+    for recipe in db:
+        if recipe.id == recipe_id:
+            db.remove(recipe)
+            return f"The recipe with the ID: {recipe_id} has been deleted"
+    raise HTTPException(
+        status_code=404,
+        detail=f"{recipe_id} does not exist"
+    )
+
+@app.put('/api/v1/recipes/{recipe_id}')
+async def update_recipe(recipe_update: RecipeUpdateRequest, recipe_id: UUID):
+    for recipe in db:
+        if recipe.id == recipe_id:
+            for x in recipe_update.__dict__:
+                if recipe_update.__dict__[x] != None:
+                    setattr(recipe, str(x), recipe_update.__dict__[x])
+                return
+
+    raise HTTPException(
+        status_code=404,
+        detail=f"Recipe ID '{recipe_id}' does not exist"
+    )
+
+
+
+
+
+
