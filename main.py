@@ -1,9 +1,8 @@
-
 from uuid import UUID, uuid4
 from fastapi import FastAPI, HTTPException
 import pandas as pd
 from models import Recipe, RecipeUpdateRequest
-from typing import List
+from typing import List, Optional, Union
 
 app = FastAPI()
 
@@ -46,6 +45,7 @@ async def upload_recipe(recipe: Recipe):
         db.append(recipe)
         return f"Recipe '{recipe.title}' has successfully been added!"
 
+
 @app.delete('/api/v1/recipes/{recipe_id}')
 async def delete_recipe(recipe_id: UUID):
     for recipe in db:
@@ -57,21 +57,37 @@ async def delete_recipe(recipe_id: UUID):
         detail=f"{recipe_id} does not exist"
     )
 
+
 @app.put('/api/v1/recipes/{recipe_id}')
 async def update_recipe(recipe_update: RecipeUpdateRequest, recipe_id: UUID):
     for recipe in db:
         if recipe.id == recipe_id:
             for x in recipe_update.__dict__:
                 if recipe_update.__dict__[x] != None:
+                    print(recipe_update.__dict__[x])
                     setattr(recipe, str(x), recipe_update.__dict__[x])
-                return
+            return "Successfully updated!"
 
     raise HTTPException(
         status_code=404,
         detail=f"Recipe ID '{recipe_id}' does not exist"
     )
 
-
+@app.get("/api/v1/recipes/filter")
+async def read_item(
+        id: Optional[UUID] = uuid4(),
+        title: Union[str, None] = None,
+        rating: Union[str, None] = None,
+        calories: Union[str, None] = None,
+        protein: Union[str, None] = None,
+        fat: Union[str, None] = None,
+        sodium: Union[str, None] = None,
+        almond: Union[str, None] = None,
+        dairy: Union[str, None] = None,
+        pork: Union[str, None] = None,
+):
+    params = locals().copy()
+    del params['id']
 
 
 
