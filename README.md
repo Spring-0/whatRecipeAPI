@@ -1,6 +1,6 @@
 # whatRecipeAPI
 
-Find all kinds of recipes from healthy to junk food. Have any food restrictions such as peanuts, beef, and pork? This will show you the recipe for you! (at least it will in the future 🤣)
+Find all kinds of recipes from healthy to junk food. Have any food restrictions such as peanuts, beef, or pork? This will show you the recipe for you! (at least it will in the future 🤣)
 
 ## Description
 
